@@ -11,9 +11,11 @@
 -(IBAction)Update{
 
     NSMutableArray *partyScores = [[NSMutableArray alloc] init]; //Array of score to sort
-    NSMutableArray *displayparties = [[NSMutableArray alloc] init]; //Array of name to display
+    NSMutableArray *todayparties = [[NSMutableArray alloc] init]; //Array of best parties today
+    NSMutableArray *tomorrowparties = [[NSMutableArray alloc] init]; //Array of best parties tomorrow
     NSMutableArray *data =[[NSMutableArray alloc] init]; //Array of object to hold data
-
+    NSInteger numParties = 4;
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Todo"];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -28,7 +30,7 @@
                 [data addObject:object];
                 [partyScores addObject:[NSNumber numberWithInteger:[object[@"FratScore"] intValue]]];            }
             
-                int numDisplay = 4; //number of parties to display
+                int numDisplay = 8; //number of parties to display
             
                 while(numDisplay>=1){
                     
@@ -54,38 +56,45 @@
                     NSInteger dataMonth = [components month];
                     NSInteger dataDay = [[data objectAtIndex:index][@"PartyDateDay"] intValue];
                     
-                    //If the system date is the same with data's date, add the party to display table
+                    //Add the party to today table
                     if (dataDay == day && dataMonth == month){
-                        [displayparties addObject:name];
-                        NSLog(@"The current name is %@,%d,%@",[displayparties lastObject],data.count,[data objectAtIndex:index][@"FratScore"]);
-                        
+                        [todayparties addObject:name];
                     }
+                    if (dataDay == day+1 && dataMonth == month){
+                        [tomorrowparties addObject:name];
+                    }
+                    
                     [partyScores removeObjectAtIndex:index];
                     [data removeObjectAtIndex:index];
                     numDisplay--;
                 }
-                
-                [today1 setText:[NSString stringWithFormat:@"1. %@", [displayparties objectAtIndex:0]]];
-                [today2 setText:[NSString stringWithFormat:@"2. %@", [displayparties objectAtIndex:1]]];
-                [today3 setText:[NSString stringWithFormat:@"3. %@", [displayparties objectAtIndex:2]]];
-                [today4 setText:[NSString stringWithFormat:@"4. %@", [displayparties objectAtIndex:3]]];
-                
+            NSLog(@"%d",todayparties.count);
+            
+          
+            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         
-
-        
+        //Out put the parties to screen
+        for(int i=0; i<numParties; i++){
+            UILabel *label = [self valueForKey: [NSString stringWithFormat:@"today%d", i+1]];
+            if(i < todayparties.count){
+                [label setText:[NSString stringWithFormat:@"%d. %@",i+1,[todayparties objectAtIndex:i]]];
+            } else {
+                [label setText:[NSString stringWithFormat:@"%d. Unranked",i+1]];
+            }
+        }
+        for(int i=0; i<numParties; i++){
+            UILabel *label = [self valueForKey: [NSString stringWithFormat:@"tomorrow%d", i+1]];
+            if(i < tomorrowparties.count){
+                [label setText:[NSString stringWithFormat:@"%d. %@",i+1,[tomorrowparties objectAtIndex:i]]];
+            } else {
+                [label setText:[NSString stringWithFormat:@"%d. Unranked",i+1]];
+            }
+        }
     }];
-
-
-    
-    //.text needs a label to remember and reference to
-//    NSString *saveString = .text;
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:saveString forKey:@"saveString"];
-//    [defaults synchronize];
 }
 
 - (void)didReceiveMemoryWarning {

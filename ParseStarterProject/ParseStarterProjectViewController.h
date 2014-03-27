@@ -5,8 +5,9 @@
     IBOutlet UILabel *today2;
     IBOutlet UILabel *today3;
     IBOutlet UILabel *today4;
-    
+    IBOutletCollection(UILabel) NSArray *myLabels;
     //Tomorrow's Parties
+
     IBOutlet UILabel *tomorrow1;
     IBOutlet UILabel *tomorrow2;
     IBOutlet UILabel *tomorrow3;
