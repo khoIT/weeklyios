@@ -4,7 +4,12 @@
 @implementation ParseStarterProjectViewController
 
 -(IBAction)Clear{
-    
+    for(int i=0; i<4; i++){
+        UILabel *label = [self valueForKey: [NSString stringWithFormat:@"today%d", i+1]];
+        [label setText:[NSString stringWithFormat:@"%d.",i+1]];
+        label = [self valueForKey: [NSString stringWithFormat:@"tomorrow%d", i+1]];
+        [label setText:[NSString stringWithFormat:@"%d.",i+1]];
+    }
 }
 
 

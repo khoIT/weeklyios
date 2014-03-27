@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/ParseStarterProjectViewController.m"
-            timestampString = "417602825.560505"
+            timestampString = "417648177.786778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7"
-            endingLineNumber = "7"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
             landmarkName = "-Clear"
             landmarkType = "5">
          </BreakpointContent>
