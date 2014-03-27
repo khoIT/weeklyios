@@ -14,18 +14,20 @@
 		<string>ssh://github.com/khointran/weeklyios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ParseStarterProject.xcodeproj/project.xcworkspace</string>
+	<string>ParseStarterProject-2/ParseStarterProject.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>04ECBB61-A9AC-44D7-9B7F-7809C85A71A9</key>
 		<string>../..</string>
+		<key>C25B2960-FE07-4137-91A3-12E930B8BEFA</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/khointran/weeklyios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>04ECBB61-A9AC-44D7-9B7F-7809C85A71A9</string>
+	<string>C25B2960-FE07-4137-91A3-12E930B8BEFA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +37,14 @@
 			<string>04ECBB61-A9AC-44D7-9B7F-7809C85A71A9</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ParseStarterProject-2</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C25B2960-FE07-4137-91A3-12E930B8BEFA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Weekly</string>
 		</dict>
 	</array>
 </dict>

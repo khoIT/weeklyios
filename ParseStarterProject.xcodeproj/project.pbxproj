@@ -29,6 +29,11 @@
 		C4C51B571613CE0800959FDC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B541613CE0800959FDC /* Default.png */; };
 		C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B551613CE0800959FDC /* Default-568h@2x.png */; };
 		C4C51B591613CE0800959FDC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B561613CE0800959FDC /* Default@2x.png */; };
+		D6C30EDE18E4AED500C080B4 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C30EDB18E4AED500C080B4 /* ECSlidingViewController.m */; };
+		D6C30EDF18E4AED500C080B4 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C30EDD18E4AED500C080B4 /* UIImage+ImageWithUIView.m */; };
+		D6C30EE518E4B3A900C080B4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C30EE418E4B3A900C080B4 /* MainViewController.m */; };
+		D6C30EE818E4B42200C080B4 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C30EE718E4B42200C080B4 /* MenuViewController.m */; };
+		D6C30EEB18E4B59400C080B4 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C30EEA18E4B59400C080B4 /* SecondViewController.m */; };
 		DD952FCB16E7F5CF00470144 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E18B1E1624CB5700B17A67 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +70,16 @@
 		C4C51B541613CE0800959FDC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C4C51B551613CE0800959FDC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C4C51B561613CE0800959FDC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D6C30EDA18E4AED500C080B4 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		D6C30EDB18E4AED500C080B4 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		D6C30EDC18E4AED500C080B4 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		D6C30EDD18E4AED500C080B4 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
+		D6C30EE318E4B3A900C080B4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		D6C30EE418E4B3A900C080B4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		D6C30EE618E4B42200C080B4 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		D6C30EE718E4B42200C080B4 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		D6C30EE918E4B59400C080B4 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		D6C30EEA18E4B59400C080B4 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +150,7 @@
 		09ABC07713A1D52D009C3FCF /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
+				D6C30ED918E4AED500C080B4 /* ECSlidingViewController */,
 				09ABC08013A1D52D009C3FCF /* ParseStarterProjectAppDelegate.h */,
 				09ABC08113A1D52D009C3FCF /* ParseStarterProjectAppDelegate.m */,
 				09ABC08313A1D52D009C3FCF /* MainWindow.xib */,
@@ -157,8 +173,26 @@
 				09ABC07A13A1D52D009C3FCF /* InfoPlist.strings */,
 				09ABC07D13A1D52D009C3FCF /* ParseStarterProject-Prefix.pch */,
 				09ABC07E13A1D52D009C3FCF /* main.m */,
+				D6C30EE618E4B42200C080B4 /* MenuViewController.h */,
+				D6C30EE718E4B42200C080B4 /* MenuViewController.m */,
+				D6C30EE318E4B3A900C080B4 /* MainViewController.h */,
+				D6C30EE418E4B3A900C080B4 /* MainViewController.m */,
+				D6C30EE918E4B59400C080B4 /* SecondViewController.h */,
+				D6C30EEA18E4B59400C080B4 /* SecondViewController.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6C30ED918E4AED500C080B4 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D6C30EDA18E4AED500C080B4 /* ECSlidingViewController.h */,
+				D6C30EDB18E4AED500C080B4 /* ECSlidingViewController.m */,
+				D6C30EDC18E4AED500C080B4 /* UIImage+ImageWithUIView.h */,
+				D6C30EDD18E4AED500C080B4 /* UIImage+ImageWithUIView.m */,
+			);
+			name = ECSlidingViewController;
+			path = ../../ECSlidingViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +262,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C30EDF18E4AED500C080B4 /* UIImage+ImageWithUIView.m in Sources */,
+				D6C30EE518E4B3A900C080B4 /* MainViewController.m in Sources */,
 				09ABC07F13A1D52D009C3FCF /* main.m in Sources */,
+				D6C30EDE18E4AED500C080B4 /* ECSlidingViewController.m in Sources */,
+				D6C30EEB18E4B59400C080B4 /* SecondViewController.m in Sources */,
+				D6C30EE818E4B42200C080B4 /* MenuViewController.m in Sources */,
 				09ABC08213A1D52D009C3FCF /* ParseStarterProjectAppDelegate.m in Sources */,
 				09ABC08813A1D52E009C3FCF /* ParseStarterProjectViewController.m in Sources */,
 			);

@@ -1,3 +1,6 @@
+#import "ECSlidingViewController.h"
+
+
 @interface ParseStarterProjectViewController : UIViewController{
     
     //Today's Parties
