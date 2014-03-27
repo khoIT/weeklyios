@@ -10,71 +10,66 @@
 
 -(IBAction)Update{
 
-    //frat name array
-    NSMutableArray *parties = [[NSMutableArray alloc] init];
-    //frat score array
-    NSMutableArray *partyScores = [[NSMutableArray alloc] init];
-    NSMutableArray *displayparties = [[NSMutableArray alloc] init];
-    
+    NSMutableArray *partyScores = [[NSMutableArray alloc] init]; //Array of score to sort
+    NSMutableArray *displayparties = [[NSMutableArray alloc] init]; //Array of name to display
+    NSMutableArray *data =[[NSMutableArray alloc] init]; //Array of object to hold data
+
     PFQuery *query = [PFQuery queryWithClassName:@"Todo"];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
-            // Do something with the found objects
-            
-            int maxFinder = -1;
-            
+
+            // Circle through all the objects from the query
             for (PFObject *object in objects) {
                 
-                //how to add the the arraylists
-                //partyArray is defined in the ParseStarterPorj...h
-                [parties addObject:object[@"FratName"]];
+                //Adding all the objects and score
+                [data addObject:object];
+                [partyScores addObject:[NSNumber numberWithInteger:[object[@"FratScore"] intValue]]];            }
+            
+                int numDisplay = 4; //number of parties to display
+            
+                while(numDisplay>=1){
+                    
+                    NSNumber *max = [partyScores valueForKeyPath:@"@max.self"];
+                    NSUInteger index = [partyScores indexOfObject:max]; //position of party with highest score
+                    NSString *name = [data objectAtIndex:index][@"FratName"];
+                    
+                    //Format system's date
+                    NSDate *date = [NSDate date];
+                    NSCalendar *gregorian = [NSCalendar currentCalendar];
+                    NSDateComponents *dateComponents = [gregorian components:(NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit) fromDate:date];
+                    NSInteger day = [dateComponents day];
+                    
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"M"];
+                    NSInteger month = [[formatter stringFromDate:date] intValue];
+                    
+                    //Format data's date
+                    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                    [df setDateFormat:@"MMM"];
+                    NSDate *aDate = [df dateFromString:[data objectAtIndex:index][@"PartyDateMonth"]];
+                    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:aDate];
+                    NSInteger dataMonth = [components month];
+                    NSInteger dataDay = [[data objectAtIndex:index][@"PartyDateDay"] intValue];
+                    
+                    //If the system date is the same with data's date, add the party to display table
+                    if (dataDay == day && dataMonth == month){
+                        [displayparties addObject:name];
+                        NSLog(@"The current name is %@,%d,%@",[displayparties lastObject],data.count,[data objectAtIndex:index][@"FratScore"]);
+                        
+                    }
+                    [partyScores removeObjectAtIndex:index];
+                    [data removeObjectAtIndex:index];
+                    numDisplay--;
+                }
                 
-                int i;
-                NSString* string = object[@"FratScore"];
-                i = [string intValue];
-                NSLog(@"Number %i: Party %@ has score %i", [parties count], object[@"FratName"],i);
+                [today1 setText:[NSString stringWithFormat:@"1. %@", [displayparties objectAtIndex:0]]];
+                [today2 setText:[NSString stringWithFormat:@"2. %@", [displayparties objectAtIndex:1]]];
+                [today3 setText:[NSString stringWithFormat:@"3. %@", [displayparties objectAtIndex:2]]];
+                [today4 setText:[NSString stringWithFormat:@"4. %@", [displayparties objectAtIndex:3]]];
                 
-                //add the frat scores to a separate list
-                //by doing this, we can find out the top frat
-                //by getting the cell number
-                //of the highest score in the list
-                //this use the cell number to find
-                //the name of the frat in partyArray
-                
-                [partyScores addObject:[NSNumber numberWithInteger:i]];
-                
-            }
-            
-            NSLog(@"The top score is %i", maxFinder);
-            
-            int numDisplay = 4; //number of parties to display
-            
-            while(numDisplay>=1){
-                NSNumber *max = [partyScores valueForKeyPath:@"@max.self"];
-                
-                NSUInteger index = [partyScores indexOfObject:max];
-                NSString *name = [parties objectAtIndex:index];
-
-                //check if the system date is the same with party's date
-                [displayparties addObject:name];
-                
-                [partyScores removeObjectAtIndex:index];
-                [parties removeObjectAtIndex:index];
-                numDisplay--;
-            }
-            
-            [today1 setText:[NSString stringWithFormat:@"1. %@", [displayparties objectAtIndex:0]]];
-            [today2 setText:[NSString stringWithFormat:@"2. %@", [displayparties objectAtIndex:1]]];
-            [today3 setText:[NSString stringWithFormat:@"3. %@", [displayparties objectAtIndex:0]]];
-            [today4 setText:[NSString stringWithFormat:@"4. %@", [displayparties objectAtIndex:1]]];
-            
-            
-        
-
-            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
